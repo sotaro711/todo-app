@@ -5,9 +5,7 @@ type TodoInputProps = {
 };
 
 export function TodoInput(props: TodoInputProps) {
-  const text = props.text;
-  const setText = props.setText;
-  const onAdd = props.onAdd;
+  const { text, setText, onAdd } = props;
   return (
     <div className="input-area">
       <input

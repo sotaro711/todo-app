@@ -9,10 +9,7 @@ type TodoListProps = {
 };
 
 export function TodoList(props: TodoListProps) {
-  const title = props.title;
-  const todos = props.todos;
-  const onToggle = props.onToggle;
-  const onDelete = props.onDelete;
+  const { title, todos, onToggle, onDelete } = props;
   return (
     <div className="section">
       <h2>{title}</h2>
