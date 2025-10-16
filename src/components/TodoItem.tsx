@@ -11,9 +11,7 @@ type TodoItemProps = {
 };
 
 export function TodoItem(props: TodoItemProps) {
-  const todo = props.todo;
-  const onToggle = props.onToggle;
-  const onDelete = props.onDelete;
+  const { todo, onToggle, onDelete } = props;
 
   return (
     <li className="todo-item">
