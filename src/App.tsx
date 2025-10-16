@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./index.css";
 import { TodoList } from "./components/TodoList";
+import { TodoInput } from "./components/TodoInput";
 
 export type Todo = {
   id: number;
@@ -41,16 +42,7 @@ export default function App() {
       {/* タイトル */}
       <h1>📝 Todo List</h1>
       {/* 入力場所 */}
-      <div className="input-area">
-        <input
-          type="text"
-          placeholder="やることを入力"
-          value={text}
-          onChange={(event) => setText(event.target.value)}
-        />
-        {/* 追加 */}
-        <button onClick={addTodo}>追加</button>
-      </div>
+      <TodoInput text={text} setText={setText} onAdd={addTodo} />
       {/* 未完了のリスト */}
       <TodoList
         title={"未完了"}
