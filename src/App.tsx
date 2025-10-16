@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./index.css";
+import { TodoList } from "./components/TodoList";
 
-type Todo = {
+export type Todo = {
   id: number;
   text: string;
   done: boolean;
@@ -51,58 +52,18 @@ export default function App() {
         <button onClick={addTodo}>追加</button>
       </div>
       {/* 未完了のリスト */}
-      <div className="section">
-        <h2>未完了</h2>
-        <ul>
-          {/* todos配列を 未完了のリストに反映*/}
-          {todos
-            .filter((t) => !t.done)
-            .map((todo) => {
-              return (
-                <li className="todo-item">
-                  <span>{todo.text}</span>
-                  <div>
-                    <button
-                      className="complete"
-                      onClick={() => toggleTodo(todo.id)}
-                    >
-                      完了
-                    </button>
-                    <button
-                      className="delete"
-                      onClick={() => deleteTodo(todo.id)}
-                    >
-                      削除
-                    </button>
-                  </div>
-                </li>
-              );
-            })}
-        </ul>
-      </div>
+      <TodoList
+        title={"未完了"}
+        todos={todos.filter((t) => !t.done)}
+        onDelete={deleteTodo}
+        onToggle={toggleTodo}
+      />
       {/* 完了のリスト */}
-      <div className="section">
-        <h2>完了</h2>
-        <ul>
-          {todos
-            .filter((t) => t.done)
-            .map((todo) => {
-              return (
-                <li className="todo-item">
-                  <span className="done">{todo.text}</span>
-                  <div>
-                    <button
-                      className="delete"
-                      onClick={() => deleteTodo(todo.id)}
-                    >
-                      削除
-                    </button>
-                  </div>
-                </li>
-              );
-            })}
-        </ul>
-      </div>
+      <TodoList
+        title={"完了"}
+        todos={todos.filter((t) => t.done)}
+        onDelete={deleteTodo}
+      />
     </div>
   );
 }
